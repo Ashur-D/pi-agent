@@ -1,0 +1,26 @@
+# ==========================================
+# CRITICAL: Credentials, Secrets & Tokens
+# ==========================================
+auth.json
+*.key
+*.token
+*.pem
+.env*
+*_rsa*
+
+# ==========================================
+# Pi Agent Caches & Internal State
+# ==========================================
+models-store.json
+sessions/
+tmp/
+web-search-cache/
+*-debug.log
+
+# ==========================================
+# Installed Node / Git Packages & Binaries
+# ==========================================
+npm/
+git/
+node_modules/
+bin/
