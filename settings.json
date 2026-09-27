@@ -1,8 +1,8 @@
 {
   "lastChangelogVersion": "0.87.1",
   "theme": "dark",
-  "defaultProvider": "openrouter",
-  "defaultModel": "moonshotai/kimi-k2.6",
+  "defaultProvider": "antigravity",
+  "defaultModel": "gemini-3.8-flash",
   "packages": [
     "npm:pi-web-access",
     "npm:pi-antigravity",
