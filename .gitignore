@@ -24,3 +24,13 @@ npm/
 git/
 node_modules/
 bin/
+
+# ==========================================
+# OS & Editor Artifacts
+# ==========================================
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
