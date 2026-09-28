@@ -117,19 +117,19 @@
     },
     "thinkingSteps": {
       "enabled": false,
-      "mode": "streaming"
+      "mode": "tree"
     },
     "workingLine": {
       "enabled": true,
       "turnSummary": false,
       "spinner": "star-bloom",
       "spinnerIntervalMs": 100,
-      "animateSpinnerColor": false,
+      "animateSpinnerColor": true,
       "textIntervalMs": 30,
-      "textAnimation": "classic",
+      "textAnimation": "kitt",
       "colorSource": "terminal",
       "messages": {
-        "custom": false,
+        "custom": true,
         "values": [
           "Sautéing…",
           "Cooking…",
@@ -157,7 +157,7 @@
       }
     },
     "extensionStatuses": {
-      "defaultVisibility": "show",
+      "defaultVisibility": "hide",
       "hidden": {
         "defaultPlacement": "right"
       }
