@@ -7,7 +7,7 @@
       "colorSource": "terminal",
       "borderColorMode": "adaptive",
       "modelLabel": "name",
-      "viewportIndicators": false,
+      "viewportIndicators": true,
       "styles": {
         "opencode": {
           "metadataFormat": "$model  $provider(  $thinking)(  $codex_quota)",
@@ -99,7 +99,7 @@
       }
     },
     "userMessages": {
-      "enabled": false,
+      "enabled": true,
       "style": "labeled",
       "colorSource": "terminal",
       "styles": {
@@ -159,7 +159,7 @@
     "extensionStatuses": {
       "defaultVisibility": "show",
       "hidden": {
-        "defaultPlacement": "middle"
+        "defaultPlacement": "right"
       }
     }
   },
