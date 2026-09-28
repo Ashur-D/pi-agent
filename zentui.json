@@ -34,7 +34,8 @@
           "contextThresholds": {
             "warning": 70,
             "error": 90
-          }
+          },
+          "separator": "dot"
         }
       }
     },
@@ -154,7 +155,8 @@
         "elapsed": false,
         "thought": false,
         "tokens": false
-      }
+      },
+      "placement": "border"
     },
     "extensionStatuses": {
       "defaultVisibility": "hide",
