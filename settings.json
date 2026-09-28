@@ -9,10 +9,11 @@
     "npm:@sfroment/pi-gh-cli",
     "npm:pi-context-view",
     "npm:pi-better-edit",
-    "npm:@pi-kaush/pi-welcome-screen",
     "npm:@petechu/pi-extension-toggle",
     "npm:pi-zentui",
-    "npm:@bacnh85/pi-themes"
+    "npm:@bacnh85/pi-themes",
+    "npm:@pi-kaush/pi-welcome-screen",
+    "npm:pi-agent-browser-native"
   ],
   "compaction": {
     "enabled": true

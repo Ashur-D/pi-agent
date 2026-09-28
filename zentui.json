@@ -123,9 +123,9 @@
       "enabled": true,
       "turnSummary": false,
       "spinner": "star-bloom",
-      "spinnerIntervalMs": 100,
+      "spinnerIntervalMs": 160,
       "animateSpinnerColor": true,
-      "textIntervalMs": 30,
+      "textIntervalMs": 60,
       "textAnimation": "kitt",
       "colorSource": "theme",
       "messages": {
@@ -150,10 +150,10 @@
         ]
       },
       "segments": {
-        "tool": true,
-        "elapsed": true,
-        "thought": true,
-        "tokens": true
+        "tool": false,
+        "elapsed": false,
+        "thought": false,
+        "tokens": false
       }
     },
     "extensionStatuses": {
