@@ -6,10 +6,12 @@
   "packages": [
     "npm:pi-web-access",
     "npm:pi-antigravity",
-    "npm:@pi-kaush/pi-welcome-screen",
     "npm:@sfroment/pi-gh-cli",
     "npm:pi-context-view",
-    "npm:pi-better-edit"
+    "npm:pi-better-edit",
+    "npm:@pi-kaush/pi-welcome-screen",
+    "npm:@petechu/pi-extension-toggle",
+    "npm:pi-zentui"
   ],
   "compaction": {
     "enabled": false
