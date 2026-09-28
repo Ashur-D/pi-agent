@@ -1,6 +1,6 @@
 {
   "lastChangelogVersion": "0.87.1",
-  "theme": "dark",
+  "theme": "pi-dark",
   "defaultProvider": "antigravity",
   "defaultModel": "gemini-3.8-flash",
   "packages": [
@@ -11,17 +11,31 @@
     "npm:pi-better-edit",
     "npm:@pi-kaush/pi-welcome-screen",
     "npm:@petechu/pi-extension-toggle",
-    "npm:pi-zentui"
+    "npm:pi-zentui",
+    "npm:@bacnh85/pi-themes"
   ],
   "compaction": {
-    "enabled": false
+    "enabled": true
   },
-  "tuiMode": "regular",
+  "tuiMode": "fullscreen",
   "enabledModels": [
     "antigravity/gemini-3.8-flash",
     "antigravity/claude-opus-4-6",
     "antigravity/claude-sonnet-4-6",
     "antigravity/gpt-oss-120b"
   ],
-  "hideThinkingBlock": true
+  "hideThinkingBlock": true,
+  "images": {
+    "autoResize": true
+  },
+  "treeFilterMode": "default",
+  "terminal": {
+    "imageWidthCells": 60,
+    "showTerminalProgress": false
+  },
+  "editorPaddingX": 0,
+  "outputPad": 1,
+  "enableInstallTelemetry": false,
+  "doubleEscapeAction": "tree",
+  "quietStartup": false
 }

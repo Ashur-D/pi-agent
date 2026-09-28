@@ -4,7 +4,7 @@
       "enabled": true,
       "style": "minimalist",
       "codexQuota": true,
-      "colorSource": "terminal",
+      "colorSource": "theme",
       "borderColorMode": "adaptive",
       "modelLabel": "name",
       "viewportIndicators": true,
@@ -101,7 +101,7 @@
     "userMessages": {
       "enabled": true,
       "style": "labeled",
-      "colorSource": "terminal",
+      "colorSource": "theme",
       "styles": {
         "framed": {},
         "framed-copy-friendly": {},
@@ -113,11 +113,11 @@
     "selectorBorders": {
       "enabled": true,
       "style": "zentui",
-      "colorSource": "terminal"
+      "colorSource": "theme"
     },
     "thinkingSteps": {
       "enabled": false,
-      "mode": "tree"
+      "mode": "streaming"
     },
     "workingLine": {
       "enabled": true,
@@ -127,7 +127,7 @@
       "animateSpinnerColor": true,
       "textIntervalMs": 30,
       "textAnimation": "kitt",
-      "colorSource": "terminal",
+      "colorSource": "theme",
       "messages": {
         "custom": true,
         "values": [
