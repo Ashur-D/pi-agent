@@ -24,10 +24,10 @@
         },
         "minimalist": {
           "pathDisplay": "full",
-          "contextFormat": "percent",
+          "contextFormat": "percent-total",
           "contextGauge": true,
           "showSessionName": true,
-          "showTimer": false,
+          "showTimer": true,
           "showCost": true,
           "showCacheHit": true,
           "showGit": true,

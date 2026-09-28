@@ -28,7 +28,7 @@
   "images": {
     "autoResize": true
   },
-  "treeFilterMode": "default",
+  "treeFilterMode": "no-tools",
   "terminal": {
     "imageWidthCells": 60,
     "showTerminalProgress": false
@@ -36,6 +36,6 @@
   "editorPaddingX": 0,
   "outputPad": 1,
   "enableInstallTelemetry": false,
-  "doubleEscapeAction": "tree",
+  "doubleEscapeAction": "none",
   "quietStartup": false
 }
