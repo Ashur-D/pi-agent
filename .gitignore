@@ -16,6 +16,7 @@ sessions/
 tmp/
 web-search-cache/
 *-debug.log
+crashes.json
 
 # ==========================================
 # Installed Node / Git Packages & Binaries

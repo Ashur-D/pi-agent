@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.87.1",
+  "lastChangelogVersion": "0.99.2",
   "theme": "pi-dark",
   "defaultProvider": "antigravity",
   "defaultModel": "gemini-3.8-flash",
@@ -9,11 +9,8 @@
     "npm:@sfroment/pi-gh-cli",
     "npm:pi-context-view",
     "npm:pi-better-edit",
-    "npm:@petechu/pi-extension-toggle",
     "npm:pi-zentui",
-    "npm:@bacnh85/pi-themes",
-    "npm:@pi-kaush/pi-welcome-screen",
-    "npm:pi-agent-browser-native"
+    "npm:@bacnh85/pi-themes"
   ],
   "compaction": {
     "enabled": true
@@ -38,5 +35,5 @@
   "outputPad": 1,
   "enableInstallTelemetry": false,
   "doubleEscapeAction": "none",
-  "quietStartup": false
+  "quietStartup": true
 }
