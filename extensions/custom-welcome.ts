@@ -207,12 +207,10 @@ export default function (pi: ExtensionAPI) {
           banner.push("");
 
           // ─── Badges: Punchy & Centered ─────────────────────────────────────
-          const dot = theme.fg("dim", "  ·  ");
-          const badges = [
-            `${theme.fg("dim", "Pi")} ${theme.fg("accent", `v${piVersion}`)}`,
-            `${theme.fg("dim", "Auth")} ${theme.fg("success", "Ready")}`,
-            `${theme.fg("muted", dateStr)} ${theme.fg("dim", "·")} ${theme.fg("text", timeStr)}`,
-          ].join(dot);
+          const badges = theme.fg(
+            "text",
+            `Pi v${piVersion}  ·  Auth Ready  ·  ${dateStr} · ${timeStr}`
+          );
           banner.push(center(badges, width));
           banner.push("");
 
