@@ -2,6 +2,7 @@
 # CRITICAL: Credentials, Secrets & Tokens
 # ==========================================
 auth.json
+antigravity-accounts.json
 *.key
 *.token
 *.pem

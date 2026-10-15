@@ -154,9 +154,11 @@
         "tool": false,
         "elapsed": false,
         "thought": false,
-        "tokens": false
+        "tokens": false,
+        "tokenRate": false
       },
-      "placement": "border"
+      "placement": "border",
+      "turnSummaryFormat": "Turn took $turn_duration$join_sep(thought for $thought_duration)$join_sep(↑$input_tokens ↓$output_tokens)$join_sep$token_rate"
     },
     "extensionStatuses": {
       "defaultVisibility": "hide",
