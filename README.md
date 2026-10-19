@@ -3,12 +3,13 @@
 My personal configuration, extensions, and curated custom skills for the [Pi Coding Agent](https://github.com/earendil-works/pi).
 
 ## 📁 Repository Contents
-
 * **`settings.json`**: Theme preferences, default models, thinking levels, and declared package extensions.
 * **`web-search.json`**: Web search configuration and defaults.
+* **`zentui.json`**: ZenTUI customized themes and dashboard settings.
 * **`skills/`**: Library of custom skills (workflow automation, debugging, academic writing, network automation, and system administration).
-* **`setup.sh`**: One-line automation script to install prerequisites, Pi CLI, packages, and sync skills.
-
+* **`t3/`**: Curated T3 Code configuration (font setup, custom keybindings, model preferences, and favorites).
+* **`setup.sh` / `setup.ps1`**: Cross-platform universal manager (Linux/macOS/Windows) to install prerequisites, Pi CLI, packages, extensions, and optionally integrate with T3 Code.
+* **`sync.sh` / `sync.ps1`**: Two-way sync tool to pull live settings from `~/.t3/userdata` into `t3/` (sanitizing secrets) for Git version control.
 ---
 
 ## 🚀 Quick Setup on a New Machine
@@ -30,6 +31,20 @@ After running `setup.sh`, launch Pi and log into your provider:
 pi
 /login
 ```
+
+---
+
+
+## 🔄 Keeping T3 Code Settings in Sync
+
+Whenever you tweak keybindings, fonts, model favorites, or composer settings in T3 Code:
+
+```bash
+cd ~/.pi/agent
+./sync.sh    # or ./setup.sh --sync (Windows: .\sync.ps1)
+```
+
+This safely pulls your live configuration from `~/.t3/userdata` into `t3/` (sanitizing secrets) and shows a `git status` summary so you can easily review and commit updates.
 
 ---
 
