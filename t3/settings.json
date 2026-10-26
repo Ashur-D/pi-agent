@@ -7,6 +7,22 @@
     {
       "provider": "pi",
       "model": "antigravity/gemini-3.8-flash"
+    },
+    {
+      "provider": "pi",
+      "model": "tabby/gemma-3-4b-it-exl3-8bpw-h8"
+    },
+    {
+      "provider": "pi",
+      "model": "antigravity/gemini-4-argon"
+    },
+    {
+      "provider": "pi",
+      "model": "antigravity/claude-opus-5-5"
+    },
+    {
+      "provider": "pi",
+      "model": "antigravity/claude-sonnet-5-5"
     }
   ],
   "providerModelPreferences": {
@@ -22,9 +38,20 @@
         "antigravity/gemini-3.5-flash",
         "antigravity/gemini-3.6-flash",
         "antigravity/gemini-3.7-flash",
+        "antigravity/gemini-4-argon-disabled",
         "default"
       ],
-      "modelOrder": []
+      "modelOrder": [
+        "antigravity/gemini-3.8-flash",
+        "antigravity/gemini-4-argon",
+        "antigravity/claude-opus-4-6",
+        "antigravity/claude-sonnet-4-6",
+        "antigravity/gpt-oss-120b",
+        "default",
+        "antigravity/gemini-3.7-flash",
+        "antigravity/gemini-3.6-flash",
+        "antigravity/gemini-3.1-pro"
+      ]
     },
     "antigravity": {
       "hiddenModels": [
@@ -46,6 +73,8 @@
   },
   "projectSettingsFolded": true,
   "enableDeviceSupport": true,
+  "idleCompaction": "onReturn",
+  "autoResumeLimitedThreads": true,
   "environmentIcon": "linux",
   "providerInstances": {
     "claudeAgent": {
@@ -74,14 +103,6 @@
       "driver": "pi",
       "displayName": "Pi",
       "enabled": true
-    },
-    "codex_57f4e49b-6efd-4bf8-8164-9b9ae73c1df6": {
-      "driver": "codex",
-      "displayName": "ChatGPT - Personal",
-      "enabled": false,
-      "config": {
-        "setupMode": "managed"
-      }
     },
     "codex": {
       "driver": "codex",

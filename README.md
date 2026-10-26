@@ -8,7 +8,7 @@ My personal configuration, extensions, and curated custom skills for the [Pi Cod
 * **`zentui.json`**: ZenTUI customized themes and dashboard settings.
 * **`skills/`**: Library of custom skills (workflow automation, debugging, academic writing, network automation, and system administration).
 * **`t3/`**: Curated T3 Code configuration (font setup, custom keybindings, model preferences, and favorites).
-* **`setup.sh` / `setup.ps1`**: Cross-platform universal manager (Linux/macOS/Windows) to install prerequisites, Pi CLI, packages, extensions, and optionally integrate with T3 Code.
+* **`setup.sh` / `setup.ps1`**: Cross-platform universal manager with subcommands (`--doctor`, `--sync`, `--install`, `--uninstall`).
 * **`sync.sh` / `sync.ps1`**: Two-way sync tool to pull live settings from `~/.t3/userdata` into `t3/` (sanitizing secrets) for Git version control.
 ---
 
@@ -30,6 +30,17 @@ After running `setup.sh`, launch Pi and log into your provider:
 ```bash
 pi
 /login
+```
+
+
+---
+
+## 🩺 System Health Check (Doctor)
+
+Run the built-in health check to inspect Node.js, CLI dependencies, Pi installation, auth credentials, and T3 Code integration:
+
+```bash
+./setup.sh --doctor    # Windows: .\setup.ps1 -Doctor
 ```
 
 ---
