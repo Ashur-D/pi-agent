@@ -16,6 +16,7 @@ models-store.json
 sessions/
 tmp/
 web-search-cache/
+pi-web-access/
 *-debug.log
 crashes.json
 

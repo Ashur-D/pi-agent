@@ -1,12 +1,11 @@
 {
   "lastChangelogVersion": "1.4.0",
-  "theme": "pi-dark",
+  "theme": "noctalia",
   "packages": [
     "npm:pi-web-access",
     "npm:pi-context-view",
     "npm:pi-better-edit",
     "npm:pi-zentui",
-    "npm:@bacnh85/pi-themes",
     "npm:pi-antigravity"
   ],
   "compaction": {
