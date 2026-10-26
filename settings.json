@@ -6,7 +6,9 @@
     "npm:@sfroment/pi-gh-cli",
     "npm:pi-context-view",
     "npm:pi-better-edit",
-    "npm:pi-zentui"
+    "npm:pi-zentui",
+    "npm:pi-antigravity",
+    "npm:@bacnh85/pi-themes"
   ],
   "compaction": {
     "enabled": true
@@ -25,6 +27,6 @@
   "outputPad": 1,
   "enableInstallTelemetry": false,
   "doubleEscapeAction": "none",
-  "quietStartup": true,
+  "quietStartup": false,
   "steeringMode": "all"
 }
