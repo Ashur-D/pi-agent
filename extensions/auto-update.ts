@@ -65,7 +65,7 @@ export default function (pi: ExtensionAPI) {
         cmdArgs.push(args.trim());
       }
 
-      const syncRes = await pi.exec(join(agentDir, "setup.sh"), cmdArgs);
+      const syncRes = await pi.exec(join(agentDir, "bin", "setup.sh"), cmdArgs);
       if (syncRes.code === 0) {
         ctx.ui.notify("✨ Successfully synced and pushed to GitHub!", "info");
       } else {

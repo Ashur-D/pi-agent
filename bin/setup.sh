@@ -2,7 +2,7 @@
 set -euo pipefail
 
 TARGET_DIR="$HOME/.pi/agent"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 T3_USERDATA="$HOME/.t3/userdata"
 
 # ========================================================

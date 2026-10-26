@@ -25,7 +25,6 @@ crashes.json
 npm/
 git/
 node_modules/
-bin/
 
 # ==========================================
 # OS & Editor Artifacts

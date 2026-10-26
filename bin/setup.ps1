@@ -8,7 +8,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 $TARGET_DIR = "$HOME\.pi\agent"
-$SCRIPT_DIR = Split-Path -Parent $MyInvocation.MyCommand.Definition
+$SCRIPT_DIR = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Definition)
 $T3_USERDATA = "$HOME\.t3\userdata"
 
 function Test-CommandExists {
