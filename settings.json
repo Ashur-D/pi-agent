@@ -3,7 +3,6 @@
   "theme": "pi-dark",
   "packages": [
     "npm:pi-web-access",
-    "npm:@sfroment/pi-gh-cli",
     "npm:pi-context-view",
     "npm:pi-better-edit",
     "npm:pi-zentui",
