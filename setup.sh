@@ -93,12 +93,33 @@ run_doctor() {
 # SYNC PROCEDURE (T3 + Pi -> Repo)
 # ========================================================
 run_sync() {
+    local auto_push=false
+    local custom_msg=""
+
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            --push|-p)
+                auto_push=true
+                shift
+                ;;
+            -m|--message)
+                custom_msg="${2:-}"
+                shift 2
+                ;;
+            *)
+                if [ -z "$custom_msg" ]; then
+                    custom_msg="$1"
+                fi
+                shift
+                ;;
+        esac
+    done
+
     echo ""
     echo "=========================================================="
     echo "  🔄 Sync Live Settings to Project Repository             "
     echo "=========================================================="
     echo ""
-
     # 1. Sync Pi configuration if repo is cloned outside ~/.pi/agent
     if [ "$SCRIPT_DIR" != "$TARGET_DIR" ] && [ -d "$TARGET_DIR" ]; then
         echo ":: Syncing Pi settings & skills from $TARGET_DIR -> $SCRIPT_DIR..."
@@ -152,11 +173,31 @@ run_sync() {
     echo ""
     echo ":: Checking Git changes..."
     if command -v git &>/dev/null && [ -d "$SCRIPT_DIR/.git" ]; then
-        git -C "$SCRIPT_DIR" status --short
+        if [ -n "$(git -C "$SCRIPT_DIR" status --porcelain)" ]; then
+            git -C "$SCRIPT_DIR" status --short
+            echo ""
+            if [ "$auto_push" = true ]; then
+                local msg="${custom_msg:-chore: sync live Pi and T3 settings [$(date +'%Y-%m-%d %H:%M')]}"
+                echo ":: Staging, committing, and pushing changes to GitHub..."
+                git -C "$SCRIPT_DIR" add -A
+                git -C "$SCRIPT_DIR" commit -m "$msg"
+                git -C "$SCRIPT_DIR" push origin main
+                echo "✨ Changes committed and pushed to GitHub!"
+            else
+                read -rp ":: Changes detected. Would you like to commit and push now? [y/N]: " do_push || do_push="n"
+                if [[ "$do_push" =~ ^[Yy]$ ]]; then
+                    read -rp "Enter commit message (or press enter for default): " user_msg || user_msg=""
+                    local msg="${user_msg:-chore: sync live Pi and T3 settings [$(date +'%Y-%m-%d %H:%M')]}"
+                    git -C "$SCRIPT_DIR" add -A
+                    git -C "$SCRIPT_DIR" commit -m "$msg"
+                    git -C "$SCRIPT_DIR" push origin main
+                    echo "✨ Changes committed and pushed to GitHub!"
+                fi
+            fi
+        else
+            echo ":: Everything is already in sync with Git (no changes detected)."
+        fi
     fi
-
-    echo ""
-    echo "✨ Sync complete! You can now review changes with 'git diff' and commit them."
 }
 
 # ========================================================
@@ -384,7 +425,8 @@ case "${1:-}" in
         exit 0
         ;;
     --sync|-s|sync)
-        run_sync
+        shift
+        run_sync "$@"
         exit 0
         ;;
     --install|-i|install)

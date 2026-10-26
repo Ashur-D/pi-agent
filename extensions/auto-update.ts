@@ -52,4 +52,25 @@ export default function (pi: ExtensionAPI) {
       }
     },
   });
+
+  // ─── Manual /sync command in chat ─────────────────────────────────────────
+  pi.registerCommand("sync", {
+    description: "Sync live T3 Code settings to repo and push all changes to GitHub",
+    handler: async (args, ctx) => {
+      ctx.ui.notify("Syncing settings and pushing to GitHub...", "info");
+      const home = homedir();
+      const agentDir = join(home, ".pi", "agent");
+      const cmdArgs = ["--sync", "--push"];
+      if (args && args.trim()) {
+        cmdArgs.push(args.trim());
+      }
+
+      const syncRes = await pi.exec(join(agentDir, "setup.sh"), cmdArgs);
+      if (syncRes.code === 0) {
+        ctx.ui.notify("✨ Successfully synced and pushed to GitHub!", "info");
+      } else {
+        ctx.ui.notify("⚠️ Sync failed. Check terminal or run './setup.sh --doctor'.", "error");
+      }
+    },
+  });
 }
