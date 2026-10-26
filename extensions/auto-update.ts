@@ -73,4 +73,27 @@ export default function (pi: ExtensionAPI) {
       }
     },
   });
+
+  // ─── Interactive Exit Hook (Terminal TUI only) ────────────────────────────
+  pi.on("session_shutdown", async (_event, ctx) => {
+    // Only prompt when running interactively in terminal TUI (never blocks T3 Code)
+    if (!ctx.hasUI || ctx.mode !== "tui") return;
+
+    const home = homedir();
+    const agentDir = join(home, ".pi", "agent");
+    const { stdout: status } = await pi.exec("git", ["-C", agentDir, "status", "--porcelain"]);
+
+    if (status && status.trim().length > 0) {
+      const choice = await ctx.ui.select("Uncommitted changes detected in Pi config. Sync to GitHub?", [
+        "Yes, sync & push to GitHub",
+        "No, exit without syncing",
+      ]);
+
+      if (choice?.startsWith("Yes")) {
+        const syncScript = join(agentDir, "bin", "setup.sh");
+        await pi.exec(syncScript, ["--sync", "--push"]);
+        ctx.ui.notify("✨ Synced and pushed to GitHub!", "info");
+      }
+    }
+  });
 }
