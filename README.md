@@ -28,5 +28,5 @@ pi-sync
 ## 🩺 Health Check
 
 ```bash
-./bin/setup.sh --doctor    # Windows: .\bin\setup.ps1 -Doctor
+pi-doctor    # or: cd ~/.pi/agent && ./bin/setup.sh --doctor
 ```
