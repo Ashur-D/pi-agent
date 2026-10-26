@@ -27,6 +27,6 @@
   "outputPad": 1,
   "enableInstallTelemetry": false,
   "doubleEscapeAction": "none",
-  "quietStartup": false,
+  "quietStartup": "header",
   "steeringMode": "all"
 }

@@ -165,9 +165,37 @@
       "hidden": {
         "defaultPlacement": "right"
       }
+    },
+    "toolDisplay": {
+      "enabled": false,
+      "style": "opencode",
+      "registerToolOverrides": {
+        "read": false,
+        "write": false,
+        "edit": false,
+        "bash": false,
+        "grep": false,
+        "find": false,
+        "ls": false
+      },
+      "builtinRendererOverrides": {},
+      "customToolOverrides": {},
+      "readOutputMode": "hidden",
+      "searchOutputMode": "hidden",
+      "mcpOutputMode": "hidden",
+      "bashOutputMode": "opencode",
+      "previewLines": 8,
+      "expandedPreviewMaxLines": 4000,
+      "bashCollapsedLines": 10,
+      "diffViewMode": "auto",
+      "diffIndicatorMode": "bars",
+      "diffSplitMinWidth": 120,
+      "diffCollapsedLines": 24,
+      "diffWordWrap": false,
+      "showTruncationHints": false
     }
   },
   "icons": {
-    "mode": "nerd"
+    "mode": "auto"
   }
 }
