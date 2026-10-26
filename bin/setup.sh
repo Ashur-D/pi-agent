@@ -124,7 +124,6 @@ run_sync() {
     if [ "$SCRIPT_DIR" != "$TARGET_DIR" ] && [ -d "$TARGET_DIR" ]; then
         echo ":: Syncing Pi settings & skills from $TARGET_DIR -> $SCRIPT_DIR..."
         cp -u "$TARGET_DIR/settings.json" "$SCRIPT_DIR/" 2>/dev/null || true
-        cp -u "$TARGET_DIR/web-search.json" "$SCRIPT_DIR/" 2>/dev/null || true
         cp -u "$TARGET_DIR/zentui.json" "$SCRIPT_DIR/" 2>/dev/null || true
         mkdir -p "$SCRIPT_DIR/skills"
         cp -ru "$TARGET_DIR/skills/." "$SCRIPT_DIR/skills/" 2>/dev/null || true
@@ -300,9 +299,7 @@ run_install() {
         echo ":: Syncing configuration and skills into $TARGET_DIR..."
         mkdir -p "$TARGET_DIR"
         cp -u "$SCRIPT_DIR/settings.json" "$TARGET_DIR/" 2>/dev/null || true
-        cp -u "$SCRIPT_DIR/web-search.json" "$TARGET_DIR/" 2>/dev/null || true
         cp -u "$SCRIPT_DIR/zentui.json" "$TARGET_DIR/" 2>/dev/null || true
-        cp -u "$SCRIPT_DIR/keybindings.json" "$TARGET_DIR/" 2>/dev/null || true
         mkdir -p "$TARGET_DIR/extensions"
         cp -ru "$SCRIPT_DIR/extensions/." "$TARGET_DIR/extensions/" 2>/dev/null || true
         mkdir -p "$TARGET_DIR/skills"

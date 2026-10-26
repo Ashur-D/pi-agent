@@ -244,9 +244,7 @@ function Invoke-Install {
         Write-Host ":: Syncing configs and skills into $TARGET_DIR..." -ForegroundColor Cyan
         New-Item -ItemType Directory -Force -Path $TARGET_DIR | Out-Null
         Copy-Item "$SCRIPT_DIR\settings.json" "$TARGET_DIR\" -Force -ErrorAction SilentlyContinue
-        Copy-Item "$SCRIPT_DIR\web-search.json" "$TARGET_DIR\" -Force -ErrorAction SilentlyContinue
         Copy-Item "$SCRIPT_DIR\zentui.json" "$TARGET_DIR\" -Force -ErrorAction SilentlyContinue
-        Copy-Item "$SCRIPT_DIR\keybindings.json" "$TARGET_DIR\" -Force -ErrorAction SilentlyContinue
         New-Item -ItemType Directory -Force -Path "$TARGET_DIR\extensions" | Out-Null
         Copy-Item -Recurse -Force "$SCRIPT_DIR\extensions\*" "$TARGET_DIR\extensions\" -ErrorAction SilentlyContinue
         New-Item -ItemType Directory -Force -Path "$TARGET_DIR\skills" | Out-Null
