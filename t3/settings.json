@@ -108,5 +108,7 @@
       "driver": "codex",
       "enabled": false
     }
-  }
+  },
+  "defaultTheme": "noctalia",
+  "defaultThemeSetAt": "2026-10-26T18:08:04.464Z"
 }
