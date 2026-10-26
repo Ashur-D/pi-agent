@@ -17,6 +17,7 @@ export default function (pi: ExtensionAPI) {
       echo $$ > "$LOCK"
       git -C "${agentDir}" pull --ff-only >/dev/null 2>&1 || true
       npm install -g @earendil-works/pi-coding-agent >/dev/null 2>&1 || true
+      pi update --extensions >/dev/null 2>&1 || true
       rm -f "$LOCK"
     `;
 
@@ -42,9 +43,10 @@ export default function (pi: ExtensionAPI) {
 
       const gitRes = await pi.exec("git", ["-C", agentDir, "pull", "--ff-only"]);
       const npmRes = await pi.exec("npm", ["install", "-g", "@earendil-works/pi-coding-agent"]);
+      const extRes = await pi.exec("pi", ["update", "--extensions"]);
 
-      if (npmRes.code === 0 && gitRes.code === 0) {
-        ctx.ui.notify("✨ Pi and configuration are up to date!", "info");
+      if (npmRes.code === 0 && gitRes.code === 0 && extRes.code === 0) {
+        ctx.ui.notify("✨ Pi, extensions, and configuration are up to date!", "info");
       } else {
         ctx.ui.notify("⚠️ Update completed with warnings. Run './setup.sh --doctor' to inspect.", "warning");
       }
