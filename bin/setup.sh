@@ -92,6 +92,26 @@ run_doctor() {
 # ========================================================
 # SYNC PROCEDURE (T3 + Pi -> Repo)
 # ========================================================
+# Stage ONLY the files this sync owns, then commit + push. Anything else that
+# happens to be dirty (work-in-progress) is deliberately left uncommitted.
+commit_sync_changes() {
+    local repo="$1" msg="$2"
+    local paths=()
+    local p
+    for p in settings.json zentui.json skills themes t3; do
+        [ -e "$repo/$p" ] && paths+=("$p")
+    done
+
+    git -C "$repo" add -- "${paths[@]}"
+    if git -C "$repo" diff --cached --quiet; then
+        echo ":: No sync-target changes to commit (other pending edits left untouched)."
+        return 0
+    fi
+    git -C "$repo" commit -m "$msg"
+    git -C "$repo" push origin main
+    echo "✨ Changes committed and pushed to GitHub!"
+}
+
 run_sync() {
     local auto_push=false
     local custom_msg=""
@@ -136,14 +156,35 @@ run_sync() {
         echo ":: Syncing T3 Code configs from $T3_USERDATA -> $SCRIPT_DIR/t3..."
         mkdir -p "$SCRIPT_DIR/t3"
 
-        for file in client-settings.json desktop-settings.json keybindings.json keybindings-migrations; do
+        # Machine-local / churny T3 files are intentionally NOT synced:
+        #   desktop-settings.json  -> window geometry only, changes on every resize
+        #   keybindings-migrations -> machine-generated migration ledger
+        for file in keybindings.json; do
             if [ -f "$T3_USERDATA/$file" ]; then
                 cp "$T3_USERDATA/$file" "$SCRIPT_DIR/t3/$file"
                 echo "   [✓] $file"
             fi
         done
 
-        # Sync and sanitize settings.json (strip any plaintext API keys before committing)
+        # client-settings.json: strip volatile bookkeeping keys and pretty-print
+        # so future diffs are per-key instead of one changed 2.8 KB line.
+        if [ -f "$T3_USERDATA/client-settings.json" ]; then
+            node -e '
+            const fs = require("fs");
+            const volatileKeys = ["onboardingCompletedAt", "dismissedProviderUpdateNotificationKeys"];
+            try {
+                const data = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+                for (const k of volatileKeys) delete data[k];
+                fs.writeFileSync(process.argv[2], JSON.stringify(data, null, 2) + "\n", "utf8");
+                console.log("   [✓] client-settings.json (volatile keys stripped)");
+            } catch (e) {
+                console.error("   [!] Error parsing client-settings.json:", e.message);
+            }
+            ' "$T3_USERDATA/client-settings.json" "$SCRIPT_DIR/t3/client-settings.json"
+        fi
+
+        # Sync and sanitize settings.json (strip plaintext API keys + volatile
+        # timestamps before committing)
         if [ -f "$T3_USERDATA/settings.json" ]; then
             node -e '
             const fs = require("fs");
@@ -158,6 +199,7 @@ run_sync() {
                         }
                     }
                 }
+                delete data.defaultThemeSetAt;
                 fs.writeFileSync(destPath, JSON.stringify(data, null, 2) + "\n", "utf8");
                 console.log("   [✓] settings.json (sanitized secrets)");
             } catch (e) {
@@ -177,20 +219,14 @@ run_sync() {
             echo ""
             if [ "$auto_push" = true ]; then
                 local msg="${custom_msg:-chore: sync live Pi and T3 settings [$(date +'%Y-%m-%d %H:%M')]}"
-                echo ":: Staging, committing, and pushing changes to GitHub..."
-                git -C "$SCRIPT_DIR" add -A
-                git -C "$SCRIPT_DIR" commit -m "$msg"
-                git -C "$SCRIPT_DIR" push origin main
-                echo "✨ Changes committed and pushed to GitHub!"
+                echo ":: Staging sync targets, committing, and pushing to GitHub..."
+                commit_sync_changes "$SCRIPT_DIR" "$msg"
             else
                 read -rp ":: Changes detected. Would you like to commit and push now? [y/N]: " do_push || do_push="n"
                 if [[ "$do_push" =~ ^[Yy]$ ]]; then
                     read -rp "Enter commit message (or press enter for default): " user_msg || user_msg=""
                     local msg="${user_msg:-chore: sync live Pi and T3 settings [$(date +'%Y-%m-%d %H:%M')]}"
-                    git -C "$SCRIPT_DIR" add -A
-                    git -C "$SCRIPT_DIR" commit -m "$msg"
-                    git -C "$SCRIPT_DIR" push origin main
-                    echo "✨ Changes committed and pushed to GitHub!"
+                    commit_sync_changes "$SCRIPT_DIR" "$msg"
                 fi
             fi
         else

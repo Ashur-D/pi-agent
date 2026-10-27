@@ -28,6 +28,12 @@ git/
 node_modules/
 
 # ==========================================
+# Machine-local / churny state (not portable)
+# ==========================================
+t3/desktop-settings.json
+t3/keybindings-migrations
+
+# ==========================================
 # OS & Editor Artifacts
 # ==========================================
 .DS_Store
