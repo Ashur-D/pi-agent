@@ -75,6 +75,8 @@
   "enableDeviceSupport": true,
   "idleCompaction": "onReturn",
   "autoResumeLimitedThreads": true,
+  "defaultTheme": "ocean",
+  "defaultThemeSetAt": "2026-10-27T05:02:40.523Z",
   "environmentIcon": "linux",
   "providerInstances": {
     "claudeAgent": {
@@ -107,8 +109,11 @@
     "codex": {
       "driver": "codex",
       "enabled": false
+    },
+    "opencode": {
+      "driver": "opencode",
+      "displayName": "OpenCode",
+      "enabled": true
     }
-  },
-  "defaultTheme": "noctalia",
-  "defaultThemeSetAt": "2026-10-26T18:08:04.464Z"
+  }
 }
